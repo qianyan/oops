@@ -1,0 +1,12 @@
+<root>
+    <foo>foolish</foo>
+    <foo>foolish</foo>
+    <foo>
+        <bar>
+            barbarbar....
+        </bar>
+        <bar>
+            hohoho....
+        </bar>
+    </foo>
+<par k="v">parparpar....</par></root>

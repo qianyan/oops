@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+ext {
+    dom4jVersion = '1.6.1'
+    junitVersion = '4.11'
+    jaxenVersion = '1.1.6'
+
+}
+dependencies {
+    compile ("dom4j:dom4j:$dom4jVersion",
+            "jaxen:jaxen:$jaxenVersion")
+
+    testCompile ("junit:junit:$junitVersion")
+}
