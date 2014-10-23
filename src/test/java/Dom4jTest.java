@@ -52,6 +52,17 @@ public class Dom4jTest {
     }
 
     @Test
+    public void should_delete_par_from_document() throws Exception {
+        Element root = doc.getRootElement();
+        Node elem = root.selectSingleNode("//foo/bar[1]");
+        elem.detach();
+
+        List list = root.selectNodes("//foo/bar");
+
+        assertThat(list.size(), is(1));
+    }
+
+    @Test
     public void should_be_able_to_write_to_file() throws Exception {
         Element root = doc.getRootElement();
         root.addElement("par")
@@ -66,5 +77,6 @@ public class Dom4jTest {
         writer = new XMLWriter(System.out, format);
         writer.write( root );
         writer.close();
+
     }
 }
