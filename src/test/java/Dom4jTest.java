@@ -39,6 +39,19 @@ public class Dom4jTest {
     }
 
     @Test
+    public void should_modify_a_node_text() throws Exception {
+        Element root = doc.getRootElement();
+        Node node = root.selectSingleNode("//foo/bar[1]");
+        node.setText("hahaha....");
+
+        Node newNode = root.selectSingleNode("//foo/bar[1]");
+        String text = newNode.getText();
+
+
+        assertThat(text.trim(), is("hahaha...."));
+    }
+
+    @Test
     public void should_add_par_to_document() throws Exception {
         Element root = doc.getRootElement();
         Element elem = (Element)root.selectSingleNode("//foo/bar[1]");
