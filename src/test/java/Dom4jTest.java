@@ -86,6 +86,10 @@ public class Dom4jTest {
         writer = new XMLWriter(System.out, format);
         writer.write( root );
         writer.close();
+    }
 
+    @Test
+    public void should_get_root_element_from_doc() throws Exception {
+        assertThat(doc.getRootElement(), is(root));
     }
 }
