@@ -92,4 +92,19 @@ public class Dom4jTest {
     public void should_get_root_element_from_doc() throws Exception {
         assertThat(doc.getRootElement(), is(root));
     }
+
+    @Test
+    public void shoudld_get_node_by_name() throws Exception {
+        Element elem = root.element("foo");
+        String text = elem.getText();
+
+        assertThat(text, is("foolish"));
+    }
+
+    @Test
+    public void should_get_nodes_by_their_names() throws Exception {
+        List list = root.elements("foo");
+
+        assertThat(list.size(), is(3));
+    }
 }
