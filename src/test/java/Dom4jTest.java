@@ -6,6 +6,7 @@ import org.dom4j.Node;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.io.OutputFormat;
 import java.util.List;
+import java.util.Iterator;
 import java.io.FileWriter;
 
 import org.junit.Test;
@@ -106,5 +107,21 @@ public class Dom4jTest {
         List list = root.elements("foo");
 
         assertThat(list.size(), is(3));
+    }
+
+    @Test
+    public void should_travel_all_children_elements() throws Exception {
+        Iterator it = root.elementIterator();
+        Element e = (Element)it.next();
+
+        assertThat(e.getText().trim(), is("foolish"));
+    }
+
+    @Test
+    public void should_get_node_by_attribute() throws Exception{
+        Node node = root.selectSingleNode("//foo[@k='v']");
+        String text = node.getText();
+
+        assertThat(text.trim(), is("foolish"));
     }
 }

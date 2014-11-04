@@ -1,6 +1,6 @@
 <root>
     <foo>foolish</foo>
-    <foo>foolish</foo>
+    <foo k="v">foolish</foo>
     <foo>
         <bar>
             barbarbar....
