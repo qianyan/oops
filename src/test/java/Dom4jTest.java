@@ -124,4 +124,18 @@ public class Dom4jTest {
 
         assertThat(text.trim(), is("foolish"));
     }
+
+    @Test
+    public  void should_get_the_first_node_under_foo() throws Exception {
+        List list = root.selectNodes("//foo/*[1]");
+
+        assertThat(list.size(), is(1));
+    }
+
+    @Test
+    public void should_get_attribute_by_mutiple_conditions() throws Exception {
+        String text = root.valueOf("//bar[name(..)='foo']/@a");
+
+        assertThat(text, is("b"));
+    }
 }

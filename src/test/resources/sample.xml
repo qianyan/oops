@@ -2,7 +2,7 @@
     <foo>foolish</foo>
     <foo k="v">foolish</foo>
     <foo>
-        <bar>
+        <bar a="b">
             barbarbar....
         </bar>
         <bar>
