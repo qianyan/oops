@@ -138,4 +138,19 @@ public class Dom4jTest {
 
         assertThat(text, is("b"));
     }
+
+    @Test
+    public void should_get_first_node_being_processed() throws Exception {
+        Node firstNode =  root.selectSingleNode("//foo[position()=1]");
+        String text = firstNode.getText();
+
+        assertThat(text.trim(), is("foolish"));
+    }
+
+    @Test
+    public void should_get_these_nodes_matched() throws Exception {
+        List list =  root.selectNodes("foo[bar] | oop[bar]");
+
+        assertThat(list.size(), is(2));
+    }
 }

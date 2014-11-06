@@ -9,4 +9,9 @@
             hohoho....
         </bar>
     </foo>
+    <oop>
+        <bar>barbar</bar>
+    </oop>
+    <oop>
+    </oop>
 </root>
