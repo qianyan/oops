@@ -153,4 +153,20 @@ public class Dom4jTest {
 
         assertThat(list.size(), is(2));
     }
+
+    @Test
+    public void should_get_comment() throws Exception {
+        Node node = root.selectSingleNode("//foo/comment()");
+
+        String text = node.getText();
+
+        assertThat(text.trim(), is("it's a comment"));
+    }
+
+    @Test
+    public void should_get_the_number_of_nodes() throws Exception {
+        Object number = root.selectObject("count(//foo/node())");
+
+        assertThat((Double)number, is(9.0));
+    }
 }

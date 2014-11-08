@@ -2,6 +2,7 @@
     <foo>foolish</foo>
     <foo k="v">foolish</foo>
     <foo>
+        <!-- it's a comment -->
         <bar a="b">
             barbarbar....
         </bar>
