@@ -132,6 +132,7 @@ public class Dom4jTest {
         assertThat(list.size(), is(1));
     }
 
+    // and [cond1][cond2]
     @Test
     public void should_get_attribute_by_mutiple_conditions() throws Exception {
         String text = root.valueOf("//bar[name(..)='foo']/@a");
@@ -147,6 +148,7 @@ public class Dom4jTest {
         assertThat(text.trim(), is("foolish"));
     }
 
+    // or [cond1] | [cond2]
     @Test
     public void should_get_these_nodes_matched() throws Exception {
         List list =  root.selectNodes("foo[bar] | oop[bar]");
@@ -163,10 +165,19 @@ public class Dom4jTest {
         assertThat(text.trim(), is("it's a comment"));
     }
 
+    // count()
     @Test
     public void should_get_the_number_of_nodes() throws Exception {
         Object number = root.selectObject("count(//foo/node())");
 
         assertThat((Double)number, is(9.0));
+    }
+
+    // string function
+    @Test
+    public void should_concat_all_texts_of_foo_nodes() throws Exception {
+        String concatString = root.valueOf("concat(//foo[1]/text(), //foo[2]/text())");
+
+        assertThat(concatString, is("foolishfoolish"));
     }
 }
