@@ -180,4 +180,13 @@ public class Dom4jTest {
 
         assertThat(concatString, is("foolishfoolish"));
     }
+
+    @Test
+    public void should_get_nodes_under_current_node() throws Exception {
+        Node node = root.selectSingleNode("//foo[last()]");
+        Node bar = node.selectSingleNode(".//bar[@a]");
+        String text =  bar.getText();
+
+        assertThat(text.trim(), is("barbarbar...."));
+    }
 }
