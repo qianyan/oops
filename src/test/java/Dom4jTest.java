@@ -5,7 +5,11 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.io.OutputFormat;
+import org.dom4j.DocumentHelper;
+import org.dom4j.XPath;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.io.FileWriter;
 
@@ -188,5 +192,18 @@ public class Dom4jTest {
         String text =  bar.getText();
 
         assertThat(text.trim(), is("barbarbar...."));
+    }
+
+    // for xpath, need specify the ns.
+    @Test
+    public void should_get_text_from_node_under_namespace() throws Exception {
+        XPath xpath = DocumentHelper.createXPath("//B:oop/bar");
+        Map map = new HashMap();
+        map.put("B", "something");
+        xpath.setNamespaceURIs(map);
+        Node node = xpath.selectSingleNode(root);
+        String text = node.getText();
+
+        assertThat(text.trim(), is("barbar"));
     }
 }

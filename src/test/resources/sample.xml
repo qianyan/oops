@@ -14,6 +14,7 @@
     <oop>
         <bar>barbar</bar>
     </oop>
-    <oop>
-    </oop>
+    <B:oop xmlns:B="something">
+        <bar>barbar</bar>
+    </B:oop>
 </root>
