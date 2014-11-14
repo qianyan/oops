@@ -206,4 +206,13 @@ public class Dom4jTest {
 
         assertThat(text.trim(), is("barbar"));
     }
+
+    @Test
+    public void should_get_text_from_node_within_namespace() throws Exception {
+        doc.accept(new NamespaceCleaner());
+        Node node = root.selectSingleNode("//oop/bar");
+        String text = node.getText();
+
+        assertThat(text.trim(), is("barbar"));
+    }
 }
