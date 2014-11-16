@@ -208,6 +208,19 @@ public class Dom4jTest {
     }
 
     @Test
+    public void should_get_text_from_node_under_mutiple_namespaces() throws Exception {
+        XPath xpath = DocumentHelper.createXPath("//B:oop/C:par/bars/bar");
+        Map map = new HashMap();
+        map.put("B", "something");
+        map.put("C", "nothing");
+        xpath.setNamespaceURIs(map);
+        Node node = xpath.selectSingleNode(root);
+        String text = node.getText();
+
+        assertThat(text.trim(), is("barbarbar"));
+    }
+
+    @Test
     public void should_get_text_from_node_within_namespace() throws Exception {
         doc.accept(new NamespaceCleaner());
         Node node = root.selectSingleNode("//oop/bar");

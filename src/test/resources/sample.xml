@@ -16,5 +16,10 @@
     </oop>
     <B:oop xmlns:B="something">
         <bar>barbar</bar>
+        <C:par xmlns:C="nothing">
+            <bars>
+                <bar>barbarbar</bar>
+            </bars>
+        </C:par>
     </B:oop>
 </root>
