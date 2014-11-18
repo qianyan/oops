@@ -31,5 +31,27 @@ Dom4j Study
 
 `/root/foo[bar] | /root/oop[bar]`
 
+### namespace
 
+* namespace definition
 
+`<B:bar xmlns:B="some schema url"></B:bar>`
+
+* how to use xpath under namespace
+
+1.`/*local-name()='bar'`
+
+2. set namespace alias
+
+```
+DocumentHelper.createXPath("//B:bar");
+map.put("B", "some schema url");
+xpath.setNamespaceURL(map);
+```
+3. set no namespace
+
+```
+doc = DocumentHelper.parseText("<B:root xmlns:B="url">something</B:root>");
+doc.accept(new NamespaceCleaner());
+xpath.selectSingleNode(doc.getRootElement());
+```
